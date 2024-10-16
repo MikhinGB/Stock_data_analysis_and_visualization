@@ -13,6 +13,11 @@ def add_moving_average(data, window_size=5):
 
 
 def calculate_and_display_average_price(data):
+    """ Эта функция вычисляет и выводит среднюю цену закрытия акций за заданный период.
+
+    Функция будет принимать DataFrame и вычислять среднее значение колонки 'Close'.
+    Результат будет выводиться в консоль."""
+
     average_price = data['Close'].mean()
 
     # Округляем до нужного знака с помощью встроенной функции int().
@@ -23,6 +28,12 @@ def calculate_and_display_average_price(data):
 
 
 def notify_if_strong_fluctuations(data, threshold):
+    """ Эта функция анализирует данные и уведомляет пользователя,
+        если цена акций колебалась более чем на заданный процент за период.
+
+        Функция вычисляет максимальное и минимальное значения цены закрытия и сравнивает разницу с заданным порогом.
+        Если разница превышает порог, пользователь получает уведомление в консоль."""
+
     threshold = float(threshold)
     average_price_max = data['Close'].max()
     average_price_min = data['Close'].min()
