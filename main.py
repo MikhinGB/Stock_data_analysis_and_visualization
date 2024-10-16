@@ -9,6 +9,7 @@ def main():
 
     ticker = input("Введите тикер акции (например, «AAPL» для Apple Inc):»")
     period = input("Введите период для данных (например, '1mo' для одного месяца): ")
+    threshold = input("Введите пороговое значение колебания цены акции в периоде (например, '0.05' ): ")
 
     # Fetch stock data
     stock_data = dd.fetch_stock_data(ticker, period)
@@ -21,6 +22,8 @@ def main():
 
     average_price_period = dd.calculate_and_display_average_price(stock_data)
     print(f'Cредняя цена закрытия акций {ticker} за заданный период {period}: {average_price_period}')
+
+    dd.notify_if_strong_fluctuations(stock_data, threshold)
 
 if __name__ == "__main__":
     main()
