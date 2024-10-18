@@ -42,3 +42,11 @@ def notify_if_strong_fluctuations(data, threshold):
         return print(f'Цена акций в периоде колебалась более чем на заданный процент {threshold}')
     else:
         return
+
+
+def export_data_to_csv(data, filename):
+    """ Эта функция при необходимости сохраняет загруженные данные об акциях в CSV файл.
+
+    Функция принимает DataFrame и имя файла, после чего сохраняет данные в указанный файл """
+
+    return data.to_csv(filename, encoding='utf-8')

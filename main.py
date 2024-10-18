@@ -10,6 +10,7 @@ def main():
     ticker = input("Введите тикер акции (например, «AAPL» для Apple Inc):»")
     period = input("Введите период для данных (например, '1mo' для одного месяца): ")
     threshold = input("Введите пороговое значение колебания цены акции в периоде (например, '0.05' ): ")
+    export = input("Экспортировать данные в CSV формате? (Y/N):» ")
 
     # Fetch stock data
     stock_data = dd.fetch_stock_data(ticker, period)
@@ -24,6 +25,14 @@ def main():
     print(f'Cредняя цена закрытия акций {ticker} за заданный период {period}: {average_price_period}')
 
     dd.notify_if_strong_fluctuations(stock_data, threshold)
+
+    if export == "Y":
+        file_name = input("Введите название выходного файла (по умолчанию - 'out_file_csv'):» ")
+        if file_name == "":
+            file_name = 'out_file_csv.csv'
+            dd.export_data_to_csv(stock_data, file_name)
+        else:
+            dd.export_data_to_csv(stock_data, file_name)
 
 if __name__ == "__main__":
     main()
