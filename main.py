@@ -31,7 +31,7 @@ def main():
     # print(column_names)
 
     # Plot the data
-    dplt.create_and_save_plot(stock_data, ticker)
+    dplt.create_and_save_plot(stock_data, ticker, display_period)
 
     average_price_period = dd.calculate_and_display_average_price(stock_data)
     print(f'Cредняя цена закрытия акций {ticker} за заданный период {display_period}: {average_price_period}')
