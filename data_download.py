@@ -66,7 +66,7 @@ def export_data_to_csv(data, filename):
 def Elders_rays(data, period):
     """ Эта функция принимает:
              - period (по умолчанию 13) - Период расчета индикатора;
-             - DataFrame/
+             - DataFrame.
     Эта функция добавляет в DataFrame колонки:
              -  p_EMA;
              - bull_power;
