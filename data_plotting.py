@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 
-def create_and_save_plot(data, ticker, period, filename=None):
+def create_and_save_plot(data, ticker, filename=None):
     plt.figure(figsize=(10, 6))
 
     if 'Date' not in data:
@@ -25,12 +25,12 @@ def create_and_save_plot(data, ticker, period, filename=None):
     plt.legend()
 
     if filename is None:
-        filename = f"{ticker}_{period}_stock_price_chart.png"
+        filename = f"{ticker}_stock_price_chart.png"
 
     plt.savefig(filename)
     print(f"График сохранен как {filename}")
 
-def create_and_save_plot_rays(data, ticker, period, period_EMA, filename=None):
+def create_and_save_plot_rays(data, ticker, period_EMA, filename=None):
     plt.figure(figsize=(17, 10))
     p_EMA = str(period_EMA) + '-EMA'
 
@@ -65,7 +65,7 @@ def create_and_save_plot_rays(data, ticker, period, period_EMA, filename=None):
 
 
     if filename is None:
-        filename = f"{ticker}_{period}_elders_rays.png"
+        filename = f"{ticker}_elders_rays.png"
 
     plt.savefig(filename)
     print(f"График сохранен как {filename}")
