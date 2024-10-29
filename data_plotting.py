@@ -2,7 +2,9 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 
-def create_and_save_plot(data, ticker, display_period, filename=None):
+def create_and_save_plot(data, ticker, display_period, style_number, filename=None):
+    style_sheets = ['Solarize_Light2', 'dark_background']
+    plt.style.use(style_sheets[style_number])
     plt.figure(figsize=(10, 6))
 
     if 'Date' not in data:
