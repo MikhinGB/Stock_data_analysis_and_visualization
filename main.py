@@ -24,13 +24,11 @@ def main():
     export = input("Экспортировать данные в CSV формате? (Y/N):» ")
     elder_rays = input("Выводить инструмент ЛУЧИ ЭЛДЕРА? (Y/N):» ")
 
-
-
-
     # Add moving average to the data
     stock_data = dd.add_moving_average(stock_data)
-    # column_names = stock_data.columns.tolist()
-    # print(column_names)
+
+    # Add MACD, SIGNAL, MACD-hist to the data
+    stock_data = dd.macd_and_derivatives(stock_data)
 
     # Plot the data
     dplt.create_and_save_plot(stock_data, ticker, display_period, style_number)
@@ -47,7 +45,6 @@ def main():
 
         dd.export_data_to_csv(stock_data, file_name)
 
-
     if elder_rays == 'Y':
         period_EMA = input("Введите период EMA (по умолчанию - 13):» ")
         if period_EMA == "":
@@ -57,6 +54,7 @@ def main():
 
         dd.Elders_rays(stock_data, period_EMA)
         dplt.create_and_save_plot_rays(stock_data, period_EMA)
+
 
 if __name__ == "__main__":
     main()

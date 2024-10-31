@@ -13,8 +13,8 @@ def fetch_stock_data(ticker, period='1mo', start=None, end=None):
 
 
 def add_moving_average(data, window_size=5):
-    """ Эта функция добавляет в DataFrame колонку Close со скользящим средним, рассчитанным на основе
-    цен закрытия."""
+    """ Эта функция добавляет в DataFrame колонку Moving_Average со скользящим средним, рассчитанным на основе
+    цен закрытия(колонка Close)."""
 
     data['Moving_Average'] = data['Close'].rolling(window=window_size).mean()
     return data
@@ -93,3 +93,38 @@ def Elders_rays(data, period):
 
     data['Bull_power'] = data['High'] - data[p_EMA]
     data['Bear_power'] = data['Low'] - data[p_EMA]
+
+    return data
+
+def macd_and_derivatives(data):
+    """ Эта функция принимает:
+                 - DataFrame.
+        Эта функция добавляет в DataFrame колонки:
+                 -  12-EMA;
+                 -  26-EMA;
+                 - MACD;
+                 - SIGNAL;
+                 - MACD-hist.
+        Эта функция вычисляет:
+                 - 12_EMA - 12-дневное EMA по ценам закрытия. Значение вставляется в соответсвующую колонку DataFrame
+                  (колонку 12-EMA);
+                 - 26_EMA - 26-дневное EMA по ценам закрытия. Значение вставляется в соответсвующую колонку DataFrame
+                  (колонку 26-EMA);
+                 - macd - разность между 12_EMA и 26_EMA. Значение вставляется в соответсвующую колонку DataFrame
+                  (колонку MACD). На графике отображается сплошной линией;
+                 - signal - 9-дневное EMA от MACD. Значение вставляется в соответсвующую колонку DataFrame
+                  (колонку SIGNAL). На графике отображается пунктирной линией.
+                 - macd_hist - разность между MACD и signal. Значение вставляется в соответсвующую колонку DataFrame
+                  (колонку MACD-hist). На графике отображается в виде гистограммы.
+        """
+
+    data['12-EMA'] = data['Close'].ewm(span=12, adjust=False).mean()
+    data['26-EMA'] = data['Close'].ewm(span=26, adjust=False).mean()
+
+    data['MACD'] = data['12-EMA'] - data['26-EMA']
+
+    data['SIGNAL'] = data['MACD'].ewm(span=9, adjust=False).mean()
+
+    data['MACD-hist'] = data['MACD'] - data['SIGNAL']
+
+    return data
