@@ -1,5 +1,6 @@
 import data_download as dd
 import data_plotting as dplt
+import data_plotting_interactive as idplt
 
 
 def main():
@@ -32,6 +33,8 @@ def main():
 
     # Plot the data
     dplt.create_and_save_plot(stock_data, ticker, display_period, style_number)
+    idplt.create_plot_classic(stock_data)
+
 
     average_price_period = dd.calculate_and_display_average_price(stock_data)
     print(f'Cредняя цена закрытия акций {ticker} за заданный период {display_period}: {average_price_period}')
