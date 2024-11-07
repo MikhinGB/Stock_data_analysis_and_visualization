@@ -46,7 +46,7 @@
  - 13-EMA тенденция,
  - сила быков,
  - сила медведей.
-    ![Семейство графиков 2](https://github.com/MikhinGB/Stock_data_analysis_and_visualization/blob/main/AAPL_1y_elders_rays.png))
+    ![Семейство графиков 2](https://github.com/MikhinGB/Stock_data_analysis_and_visualization/blob/main/AAPL_1y_elders_rays.png)
  
   
    - предоставляет пользователю возможность выбирать стиль графиков из предложенного списка.
