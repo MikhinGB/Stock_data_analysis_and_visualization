@@ -37,7 +37,7 @@
 Отвечает за визуализацию данных.
 
 - Содержит функции для создания и сохранения графиков цен закрытия и скользящих средних.
-  ![Семейство графиков]([https://avatars1.githubusercontent.com/u/5384215?v=3&s=460 "Орк"](https://github.com/MikhinGB/Stock_data_analysis_and_visualization/blob/main/AAPL_1y_stock_price_chart.png)
-  
+ ![Семейство графиков](https://avatars1.githubusercontent.com/u/5384215?v=3&s=460 "Орк"](https://github.com/MikhinGB/Stock_data_analysis_and_visualization/blob/main/AAPL_1y_stock_price_chart.png) 
+ 
   
    - предоставляет пользователю возможность выбирать стиль графиков из предложенного списка.
